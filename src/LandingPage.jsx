@@ -20,11 +20,12 @@ function useReveal() {
 }
 
 // ── Imagem Real do Produto ────────────────────────────────────────────────────
-function ProductImage({ size = 'lg', className = '' }) {
+function ProductImage({ size = 'lg', src = '/produto-hero.png', className = '' }) {
   const sizeMap = {
     hero:  'w-52 h-auto max-h-72 sm:w-64 sm:max-h-80',
     lg:    'w-44 h-auto max-h-60 md:w-52',
     sm:    'w-20 h-auto max-h-28',
+    md:    'w-32 h-auto max-h-44',
   };
   const dim = sizeMap[size] || sizeMap['lg'];
 
@@ -35,7 +36,7 @@ function ProductImage({ size = 'lg', className = '' }) {
       <div className="absolute inset-0 rounded-full bg-blue-700 opacity-10 blur-2xl scale-150 pointer-events-none" />
       {/* Imagem real */}
       <img
-        src="/produto-hero.png"
+        src={src}
         alt="LEVANTA MAX — Suplemento Líquido 30ml"
         className={`relative z-10 object-contain drop-shadow-[0_0_28px_rgba(59,130,246,0.65)] animate-[float_6s_ease-in-out_infinite] select-none ${dim}`}
         draggable={false}
@@ -209,7 +210,7 @@ function Beneficios() {
 
           {/* Produto — aparece primeiro no mobile */}
           <div className="reveal flex justify-center md:order-2">
-            <ProductImage size="lg" />
+            <ProductImage size="lg" src="/produto-aberto.png" />
           </div>
 
           {/* Cards esquerda */}
@@ -295,6 +296,7 @@ function Precos() {
       discount: null,
       featured: false,
       btnText: 'COMPRAR AGORA',
+      img: '/produto-hero.png',
     },
     {
       label: '3 POTES',
@@ -306,6 +308,7 @@ function Precos() {
       featured: true,
       badge: 'Melhor Custo Benefício',
       btnText: 'APROVEITAR OFERTA',
+      img: '/produto-2x.png',
     },
     {
       label: '5 POTES',
@@ -316,6 +319,7 @@ function Precos() {
       discount: 'Economize R$ 241',
       featured: false,
       btnText: 'COMPRAR AGORA',
+      img: '/produto-5x.png',
     },
   ];
 
@@ -357,7 +361,7 @@ function Precos() {
                 </div>
 
                 <div className="flex justify-center mb-5">
-                  <ProductImage size="sm" className="w-20" />
+                  <ProductImage size="md" src={plan.img} className="w-32" />
                 </div>
 
                 <div className="text-center mb-6 flex-1">
