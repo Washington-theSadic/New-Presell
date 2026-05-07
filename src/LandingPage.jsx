@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { CheckCircle2, Truck, ShieldCheck, Star, Zap, Heart, Award, Leaf, FlaskConical, Package, Timer, Lock, Brain, BatteryFull, TrendingUp, Moon, Flame, Activity } from 'lucide-react';
+import { CheckCircle2, Truck, ShieldCheck, Star, Zap, Heart, Award, Leaf, FlaskConical, Package, Timer, Lock, Brain, BatteryFull, TrendingUp, Moon, Flame, Activity, Quote } from 'lucide-react';
 
 // ── Hook: Scroll Reveal com Zoom ─────────────────────────────────────────────
 function useReveal() {
@@ -450,6 +450,76 @@ function Garantia() {
   );
 }
 
+// ── Depoimentos ───────────────────────────────────────────────────────────────
+function Depoimentos() {
+  const depoimentos = [
+    {
+      nome: 'Ricardo Almeida',
+      idade: '42 Anos',
+      texto: '"Achei que era só cansaço e estresse. Fui perdendo disposição aos poucos e isso começou a afetar minha confiança. Depois que comecei a usar, senti diferença na energia, na resistência e principalmente na autoestima. Hoje me sinto mais seguro e muito mais ativo."',
+      rating: 5,
+    },
+    {
+      nome: 'Felipe Moura',
+      idade: '37 Anos',
+      texto: '"Eu evitava até iniciar certas situações porque já imaginava que iria falhar. Isso mexe com a cabeça do homem de um jeito pesado. Na primeira semana usando, senti mais firmeza, disposição e vontade. Parece que virei outra pessoa."',
+      rating: 5,
+    },
+    {
+      nome: 'Camila Torres',
+      idade: '31 Anos',
+      texto: '"Eu comprei pra tentar salvar nosso relacionamento, porque meu marido chegava cansado, sem disposição e isso tava afastando a gente. Só que agora o problema virou outro… esse homem não para mais. Parece que voltou aos 20 anos. Chega do trabalho ligado no 220 e eu que lute pra acompanhar o ritmo dele. Confesso que às vezes nem dou conta."',
+      rating: 5,
+    }
+  ];
+
+  return (
+    <section className="bg-slate-950 py-20 relative overflow-hidden">
+      {/* Background decorativo */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-[500px] bg-blue-600/5 blur-[120px] pointer-events-none rounded-full" />
+
+      <div className="container mx-auto px-4 max-w-6xl relative z-10">
+        <div className="text-center mb-16">
+          <h2 className="reveal text-3xl md:text-5xl font-black text-white mb-6">
+            Quem usa, <span className="text-blue-500">recomenda.</span>
+          </h2>
+          <p className="reveal reveal-d1 text-slate-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+            Relatos reais de homens que incluíram o Levanta Max na rotina e perceberam mais disposição, energia e desempenho.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          {depoimentos.map((dep, idx) => (
+            <div key={dep.nome} className={`reveal reveal-d${idx + 1} bg-slate-900/50 border border-slate-800/80 p-8 rounded-3xl relative flex flex-col hover:border-blue-500/30 transition-colors duration-300 shadow-[0_4px_30px_rgba(0,0,0,0.5)] backdrop-blur-sm`}>
+              <Quote className="absolute top-6 right-6 w-12 h-12 text-blue-500/10" />
+              
+              <div className="flex gap-1 mb-6">
+                {[...Array(dep.rating)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-blue-500 text-blue-500" />
+                ))}
+              </div>
+
+              <p className="text-slate-300 text-[15px] sm:text-base leading-relaxed mb-8 flex-grow italic relative z-10">
+                {dep.texto}
+              </p>
+
+              <div className="flex items-center gap-4 mt-auto border-t border-slate-800/80 pt-6">
+                <div className="w-12 h-12 rounded-full bg-slate-950 flex items-center justify-center border border-slate-800 font-black text-lg text-blue-400 shrink-0">
+                  {dep.nome.charAt(0)}
+                </div>
+                <div>
+                  <div className="text-white font-bold">{dep.nome}</div>
+                  <div className="text-slate-500 text-sm font-medium">{dep.idade}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ── Footer ────────────────────────────────────────────────────────────────────
 function Footer() {
   return (
@@ -493,6 +563,8 @@ export default function LandingPage() {
       <Precos />
       <SectionDivider />
       <Garantia />
+      <SectionDivider />
+      <Depoimentos />
       <Footer />
     </div>
   );
