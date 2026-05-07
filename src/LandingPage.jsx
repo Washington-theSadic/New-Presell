@@ -425,23 +425,26 @@ function Precos() {
 function Garantia() {
   return (
     <section className="bg-slate-950 py-20">
-      <div className="container mx-auto px-4 max-w-2xl text-center">
-        {/* Selo com reveal-pop */}
-        <div className="reveal-pop relative inline-flex items-center justify-center w-40 h-40 mx-auto mb-8">
-          <div className="absolute inset-0 rounded-full border-4 border-blue-500/50 animate-[pulse-glow_2s_ease-in-out_infinite]" />
-          <div className="absolute inset-3 rounded-full border-2 border-blue-400/30" />
-          <div className="relative flex flex-col items-center justify-center bg-slate-900 rounded-full w-full h-full shadow-[0_0_40px_rgba(59,130,246,0.3)]">
-            <ShieldCheck className="w-10 h-10 text-blue-400 mb-1" />
-            <span className="text-white font-black text-lg leading-none">30</span>
-            <span className="text-blue-400 text-[10px] font-bold tracking-widest uppercase">Dias</span>
-          </div>
+      <div className="container mx-auto px-4 max-w-2xl text-center flex flex-col items-center">
+        {/* Imagem de Garantia */}
+        <div className="reveal-pop relative inline-flex justify-center mb-8">
+          <img src="/15dias.png" alt="Garantia de 15 dias" className="w-72 sm:w-80 md:w-96 h-auto object-contain drop-shadow-[0_0_30px_rgba(59,130,246,0.25)]" />
         </div>
 
-        <h2 className="reveal reveal-d1 text-3xl md:text-4xl font-black text-white mb-4">30 Dias de Garantia</h2>
-        <p className="reveal reveal-d2 text-slate-400 text-lg leading-relaxed">
-          Satisfação garantida ou seu dinheiro de volta. <strong className="text-white">Risco Zero.</strong>{' '}
-          Se por qualquer motivo você não ficar satisfeito com os resultados, basta entrar em contato e devolveremos 100% do seu investimento — sem perguntas, sem burocracia.
-        </p>
+        <div className="reveal reveal-d2 text-slate-300 text-base md:text-lg leading-relaxed space-y-3 max-w-xl">
+          <p>
+            Sua evolução começa nas primeiras semanas.
+          </p>
+          <p>
+            Com uso contínuo, os resultados podem ser percebidos em até 15 dias,<br />
+            trazendo mais <strong className="text-white font-black">confiança e desempenho</strong>.
+          </p>
+          <div className="pt-4">
+            <span className="text-slate-400 text-sm font-medium block">
+              Receba com discrição e<br />pague somente na entrega.
+            </span>
+          </div>
+        </div>
       </div>
     </section>
   );
