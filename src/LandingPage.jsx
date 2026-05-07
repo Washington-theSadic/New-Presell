@@ -22,10 +22,10 @@ function useReveal() {
 // ── Imagem Real do Produto ────────────────────────────────────────────────────
 function ProductImage({ size = 'lg', src = '/produto-hero.png', className = '' }) {
   const sizeMap = {
-    hero:  'w-52 h-auto max-h-72 sm:w-64 sm:max-h-80',
-    lg:    'w-44 h-auto max-h-60 md:w-52',
-    sm:    'w-20 h-auto max-h-28',
-    md:    'w-32 h-auto max-h-44',
+    hero:  'w-80 h-auto max-h-[28rem] sm:w-[28rem] sm:max-h-[36rem]',
+    lg:    'w-64 h-auto max-h-80 md:w-80 md:max-h-96',
+    sm:    'w-32 h-auto max-h-44',
+    md:    'h-48 sm:h-56 w-full object-contain',
   };
   const dim = sizeMap[size] || sizeMap['lg'];
 
@@ -106,14 +106,20 @@ function Hero() {
             </ul>
 
             {/* CTA — full-width no mobile */}
-            <div className="flex flex-col items-center md:items-start gap-3">
-              <button className="btn-cta w-full md:w-auto px-8 py-5 rounded-2xl text-white font-black text-lg sm:text-xl tracking-wider uppercase cursor-pointer">
+            <div className="flex flex-col items-center md:items-start gap-4 w-full">
+              <button className="btn-cta w-full md:w-auto px-10 py-5 rounded-2xl text-white font-black text-lg sm:text-xl tracking-wider uppercase cursor-pointer hover:scale-105 transition-transform duration-300 shadow-[0_0_30px_rgba(37,99,235,0.4)]">
                 QUERO EXPERIMENTAR AGORA
               </button>
+              
               {/* Badge DESTAQUE entrega */}
-              <div className="inline-flex items-center gap-2.5 bg-green-500/10 border border-green-400/60 rounded-full px-5 py-2.5 shadow-[0_0_16px_rgba(34,197,94,0.3)] animate-pulse">
-                <Truck className="w-4 h-4 text-green-400 flex-shrink-0" />
-                <span className="text-green-300 font-black text-sm tracking-wide uppercase">Pague somente na entrega</span>
+              <div className="flex items-center gap-3 text-slate-300 bg-slate-900/40 border border-slate-700/50 rounded-xl px-4 py-3 w-full md:w-auto hover:border-blue-500/30 transition-colors">
+                <div className="bg-blue-500/20 p-2 rounded-lg shrink-0">
+                  <Truck className="w-5 h-5 text-blue-400" />
+                </div>
+                <div className="flex flex-col text-left">
+                  <span className="text-[10px] sm:text-xs text-slate-400 uppercase tracking-wider font-semibold">Compra 100% Segura</span>
+                  <span className="text-xs sm:text-sm font-bold text-white">Pague somente no momento da entrega</span>
+                </div>
               </div>
             </div>
           </div>
@@ -289,9 +295,10 @@ function Ingredientes() {
 function Precos() {
   const plans = [
     {
-      label: '1 POTE',
+      label: '1 FRASCO',
       tag: 'Tratamento de 1 Mês',
-      installment: '12x de R$ 18,93',
+      installmentPrefix: '12x de',
+      installmentValue: 'R$ 18,93',
       price: 'R$ 183',
       discount: null,
       featured: false,
@@ -299,9 +306,10 @@ function Precos() {
       img: '/produto-hero.png',
     },
     {
-      label: '3 POTES',
+      label: '3 FRASCOS',
       tag: 'Tratamento de 3 Meses',
-      installment: '12x de R$ 47,90',
+      installmentPrefix: '12x de',
+      installmentValue: 'R$ 47,90',
       price: 'R$ 463',
       original: 'R$ 549',
       discount: 'Economize R$ 86',
@@ -311,9 +319,10 @@ function Precos() {
       img: '/produto-2x.png',
     },
     {
-      label: '5 POTES',
+      label: '5 FRASCOS',
       tag: 'Tratamento de 5 Meses',
-      installment: '12x de R$ 69,90',
+      installmentPrefix: '12x de',
+      installmentValue: 'R$ 69,90',
       price: 'R$ 674',
       original: 'R$ 915',
       discount: 'Economize R$ 241',
@@ -360,18 +369,21 @@ function Precos() {
                   <div className="text-slate-500 text-xs font-semibold tracking-widest uppercase">{plan.tag}</div>
                 </div>
 
-                <div className="flex justify-center mb-5">
-                  <ProductImage size="md" src={plan.img} className="w-32" />
+                <div className="flex justify-center items-center mb-6 flex-1">
+                  <ProductImage size="md" src={plan.img} />
                 </div>
 
-                <div className="text-center mb-6 flex-1">
+                <div className="text-center mb-6">
                   {plan.original && (
                     <div className="text-slate-500 text-sm line-through mb-1">{plan.original}</div>
                   )}
-                  <div className="text-3xl font-black text-white">{plan.price}</div>
-                  <div className="text-slate-400 text-sm mt-1">ou {plan.installment} no cartão</div>
+                  <div className="flex flex-col items-center justify-center leading-tight mt-2">
+                    <span className="text-lg font-bold text-slate-300">{plan.installmentPrefix}</span>
+                    <span className="text-4xl sm:text-5xl font-black text-white tracking-tighter">{plan.installmentValue}</span>
+                  </div>
+                  <div className="text-slate-400 text-sm mt-3 font-medium">ou à vista por {plan.price}</div>
                   {plan.discount && (
-                    <div className="mt-2 inline-block bg-green-500/15 border border-green-500/30 text-green-400 text-xs font-bold px-3 py-1 rounded-full">
+                    <div className="mt-4 inline-block bg-green-500/15 border border-green-500/30 text-green-400 text-xs font-bold px-3 py-1 rounded-full">
                       {plan.discount}
                     </div>
                   )}
