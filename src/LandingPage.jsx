@@ -20,7 +20,7 @@ function useReveal() {
 }
 
 // ── Imagem Real do Produto ────────────────────────────────────────────────────
-function ProductImage({ size = 'lg', src = '/produto-hero.webp', className = '', priority = false }) {
+function ProductImage({ size = 'lg', src = '/produto-hero.webp', className = '', imgClass = '', priority = false }) {
   const sizeMap = {
     hero: 'w-80 h-auto max-h-[28rem] sm:w-[28rem] sm:max-h-[36rem]',
     lg: 'w-64 h-auto max-h-80 md:w-80 md:max-h-96',
@@ -38,7 +38,7 @@ function ProductImage({ size = 'lg', src = '/produto-hero.webp', className = '',
       <img
         src={src}
         alt="LEVANTA MAX — Suplemento Líquido 30ml"
-        className={`relative z-10 object-contain drop-shadow-[0_0_28px_rgba(59,130,246,0.65)] animate-[float_6s_ease-in-out_infinite] select-none ${dim}`}
+        className={`relative z-10 object-contain drop-shadow-[0_0_28px_rgba(59,130,246,0.65)] animate-[float_6s_ease-in-out_infinite] select-none ${dim} ${imgClass}`}
         draggable={false}
         loading={priority ? undefined : "lazy"}
         fetchpriority={priority ? "high" : undefined}
@@ -152,7 +152,7 @@ function Problema() {
           Você reconhece algum{' '}
           <span className="text-gradient-blue">desses sinais?</span>
         </h2>
-        <p className="reveal reveal-d1 text-slate-500 text-sm mb-10 max-w-xs mx-auto">
+        <p className="reveal text-slate-500 text-sm mb-10 max-w-xs mx-auto">
           O estresse, a rotina e a idade afetam cada homem. Mas isso tem solução.
         </p>
 
@@ -176,7 +176,7 @@ function Problema() {
         </div>
 
         {/* Box de resolução — Destaque Premium */}
-        <div className="reveal reveal-d2 relative mt-4">
+        <div className="reveal relative mt-4">
           {/* Efeito Glow de fundo */}
           <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 via-indigo-500 to-blue-600 rounded-2xl blur opacity-30 animate-pulse"></div>
 
@@ -218,7 +218,7 @@ function Beneficios() {
           Benefícios reais para a saúde e{' '}
           <span className="text-gradient-blue">performance masculina.</span>
         </h2>
-        <p className="reveal reveal-d1 text-slate-400 text-center mb-14 text-lg">Uma fórmula desenvolvida para homens que exigem resultados.</p>
+        <p className="reveal text-slate-400 text-center mb-14 text-lg">Uma fórmula desenvolvida para homens que exigem resultados.</p>
 
         {/* Mobile: coluna única de cards + produto centralizado */}
         <div className="flex flex-col items-center gap-6 md:grid md:grid-cols-3 md:gap-8 md:items-center">
@@ -229,7 +229,7 @@ function Beneficios() {
           </div>
 
           {/* Cards esquerda */}
-          <div className="w-full space-y-4 md:order-1 reveal reveal-d1">
+          <div className="w-full space-y-4 md:order-1 reveal">
             {cards.slice(0, 2).map((c) => (
               <div key={c.title} className="glass-card rounded-2xl p-4 hover:border-blue-500/40 transition-all duration-300 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] group">
                 <div className="flex items-start gap-4">
@@ -244,7 +244,7 @@ function Beneficios() {
           </div>
 
           {/* Cards direita */}
-          <div className="w-full space-y-4 md:order-3 reveal reveal-d2">
+          <div className="w-full space-y-4 md:order-3 reveal">
             {cards.slice(2, 4).map((c) => (
               <div key={c.title} className="glass-card rounded-2xl p-4 hover:border-blue-500/40 transition-all duration-300 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] group">
                 <div className="flex items-start gap-4">
@@ -304,7 +304,7 @@ function Ingredientes() {
             Fórmula inteligente para o{' '}
             <span className="text-gradient-blue">homem moderno.</span>
           </h2>
-          <p className="reveal reveal-d1 text-slate-400 text-lg md:text-xl max-w-2xl mx-auto">
+          <p className="reveal text-slate-400 text-lg md:text-xl max-w-2xl mx-auto">
             Cada ingrediente foi selecionado com precisão científica para máxima absorção na forma líquida, entregando efeito progressivo e duradouro.
           </p>
         </div>
@@ -377,6 +377,7 @@ function Precos() {
       badge: 'Melhor Custo Benefício',
       btnText: 'APROVEITAR OFERTA',
       img: '/produto-2x.webp',
+      imgClass: 'scale-110',
     },
     {
       label: '5 FRASCOS',
@@ -389,6 +390,7 @@ function Precos() {
       featured: false,
       btnText: 'COMPRAR AGORA',
       img: '/produto-5x.webp',
+      imgClass: 'scale-[1.45]',
     },
   ];
 
@@ -401,7 +403,7 @@ function Precos() {
             Escolha seu tratamento e comece a{' '}
             <span className="text-gradient-blue">cuidar de você.</span>
           </h2>
-          <div className="reveal reveal-d1 inline-flex items-center gap-2 text-yellow-400 font-semibold text-sm">
+          <div className="reveal inline-flex items-center gap-2 text-yellow-400 font-semibold text-sm">
             <Timer className="w-4 h-4" />
             Produto de alta demanda. Estoque limitado.
           </div>
@@ -430,7 +432,7 @@ function Precos() {
                 </div>
 
                 <div className="flex justify-center items-center mb-6 flex-1">
-                  <ProductImage size="md" src={plan.img} />
+                  <ProductImage size="md" src={plan.img} imgClass={plan.imgClass} />
                 </div>
 
                 <div className="text-center mb-6">
@@ -496,7 +498,7 @@ function Garantia() {
           <img src="/15dias.webp" alt="Garantia de 15 dias" className="w-72 sm:w-80 md:w-96 h-auto object-contain drop-shadow-[0_0_30px_rgba(59,130,246,0.25)]" />
         </div>
 
-        <div className="reveal reveal-d2 text-slate-300 text-base md:text-lg leading-relaxed space-y-3 max-w-xl">
+        <div className="reveal text-slate-300 text-base md:text-lg leading-relaxed space-y-3 max-w-xl">
           <p>
             Sua evolução começa nas primeiras semanas.
           </p>
@@ -525,15 +527,15 @@ function Depoimentos() {
       rating: 5,
     },
     {
-      nome: 'Felipe Moura',
-      idade: '37 Anos',
-      texto: '"Eu evitava até iniciar certas situações porque já imaginava que iria falhar. Isso mexe com a cabeça do homem de um jeito pesado. Na primeira semana usando, senti mais firmeza, disposição e vontade. Parece que virei outra pessoa."',
-      rating: 5,
-    },
-    {
       nome: 'Camila Torres',
       idade: '31 Anos',
       texto: '"Eu comprei pra tentar salvar nosso relacionamento, porque meu marido chegava cansado, sem disposição e isso tava afastando a gente. Só que agora o problema virou outro… esse homem não para mais. Parece que voltou aos 20 anos. Chega do trabalho ligado no 220 e eu que lute pra acompanhar o ritmo dele. Confesso que às vezes nem dou conta."',
+      rating: 5,
+    },
+    {
+      nome: 'Felipe Moura',
+      idade: '37 Anos',
+      texto: '"Eu evitava até iniciar certas situações porque já imaginava que iria falhar. Isso mexe com a cabeça do homem de um jeito pesado. Na primeira semana usando, senti mais firmeza, disposição e vontade. Parece que virei outra pessoa."',
       rating: 5,
     }
   ];
@@ -548,7 +550,7 @@ function Depoimentos() {
           <h2 className="reveal text-3xl md:text-5xl font-black text-white mb-6">
             Quem usa, <span className="text-blue-500">recomenda.</span>
           </h2>
-          <p className="reveal reveal-d1 text-slate-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+          <p className="reveal text-slate-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
             Relatos reais de homens que incluíram o Levanta Max na rotina e perceberam mais disposição, energia e desempenho.
           </p>
         </div>
@@ -613,7 +615,7 @@ function Footer() {
 // ── Sessão Final ──────────────────────────────────────────────────────────────
 function SessaoFinal() {
   return (
-    <section className="bg-black py-24 relative overflow-hidden text-center">
+    <section className="bg-slate-950 py-24 relative overflow-hidden text-center">
       {/* Background decorativo sutil */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-[500px] bg-blue-600/5 blur-[120px] pointer-events-none rounded-full" />
 
@@ -627,11 +629,8 @@ function SessaoFinal() {
           </h2>
         </div>
 
-        {/* Imagem Finalcheck Estática com Glow Premium */}
+        {/* Imagem Finalcheck Estática */}
         <div className="reveal relative flex items-center justify-center mb-16 w-full">
-          {/* Luz de fundo cinemática para destacar a imagem */}
-          <div className="absolute inset-0 bg-blue-600/10 blur-[100px] rounded-full scale-125 pointer-events-none" />
-          <div className="absolute bottom-10 w-4/5 h-1/4 bg-blue-500/20 blur-[60px] rounded-[100%] pointer-events-none" />
           
           <img
             src="/Finalcheck.webp"
@@ -643,7 +642,7 @@ function SessaoFinal() {
         </div>
 
         {/* Botão de CTA */}
-        <div className="reveal reveal-d1 w-full flex justify-center">
+        <div className="reveal w-full flex justify-center">
           <button className="btn-cta w-[85%] sm:w-[90%] md:w-auto px-8 py-5 md:px-14 md:py-6 rounded-2xl text-white font-black text-lg md:text-xl tracking-widest uppercase cursor-pointer hover:scale-105 transition-transform duration-300 shadow-[0_0_40px_rgba(37,99,235,0.4)]">
             Aproveitar a oferta
           </button>
