@@ -69,58 +69,54 @@ function Hero() {
 
       <div className="w-full mx-auto px-5 max-w-lg md:max-w-6xl">
 
-        {/* ─── MOBILE: imagem no topo, copy embaixo ─── */}
+        {/* ─── MOBILE: copy no topo, imagem embaixo ─── */}
         <div className="flex flex-col items-center md:grid md:grid-cols-2 md:gap-14 md:items-center">
 
-          {/* Imagem — aparece PRIMEIRO no mobile, com reveal-pop */}
-          <div className="w-full flex justify-center mb-6 md:mb-0 md:order-2">
-            <div className="reveal-pop">
-              <ProductImage size="hero" />
-            </div>
-          </div>
-
           {/* Copy */}
-          <div className="w-full text-center md:text-left md:order-1">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 border border-blue-500/50 rounded-full px-4 py-1.5 mb-5 bg-blue-500/10 backdrop-blur">
-              <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-              <span className="text-blue-300 text-xs font-semibold tracking-widest uppercase">100% Natural • Satisfação Garantida</span>
-            </div>
-
+          <div className="w-full text-center md:text-left order-1">
             {/* H1 */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight text-white mb-5">
-              Você ainda é o mesmo homem.<br className="hidden sm:block" />{' '}
-              Ganhe mais{' '}
-              <span className="text-gradient-blue">confiança</span>{' '}
-              no dia a dia.
+            <h1 className="text-[32px] leading-[1.1] sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-8 mx-auto md:mx-0">
+              Você ainda é o mesmo homem. Ganhe mais <span className="text-gradient-blue">confiança</span> no dia a dia.
             </h1>
 
-            {/* Bullets */}
-            <ul className="space-y-2.5 mb-7 inline-block text-left">
-              {['Mais energia', 'Autoestima Elevada', 'Performance Máxima'].map((item) => (
-                <li key={item} className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-blue-400 flex-shrink-0" />
-                  <span className="text-slate-200 font-semibold text-base sm:text-lg">{item}</span>
-                </li>
-              ))}
-            </ul>
-
-            {/* CTA — full-width no mobile */}
-            <div className="flex flex-col items-center md:items-start gap-4 w-full">
-              <button className="btn-cta w-full md:w-auto px-10 py-5 rounded-2xl text-white font-black text-lg sm:text-xl tracking-wider uppercase cursor-pointer hover:scale-105 transition-transform duration-300 shadow-[0_0_30px_rgba(37,99,235,0.4)]">
+            {/* CTA — centralizado e menor que o texto no mobile */}
+            <div className="flex flex-col items-center md:items-start gap-3.5 w-full mb-8">
+              <button className="btn-cta w-[85%] sm:w-[90%] md:w-auto px-4 py-4 md:px-10 md:py-5 rounded-xl md:rounded-2xl text-white font-black text-base sm:text-lg md:text-xl tracking-wider uppercase cursor-pointer hover:scale-105 transition-transform duration-300 shadow-[0_0_30px_rgba(37,99,235,0.4)]">
                 QUERO EXPERIMENTAR AGORA
               </button>
               
               {/* Badge DESTAQUE entrega */}
-              <div className="flex items-center gap-3 text-slate-300 bg-slate-900/40 border border-slate-700/50 rounded-xl px-4 py-3 w-full md:w-auto hover:border-blue-500/30 transition-colors">
-                <div className="bg-blue-500/20 p-2 rounded-lg shrink-0">
-                  <Truck className="w-5 h-5 text-blue-400" />
+              <div className="flex items-center justify-center gap-2 text-slate-300 bg-slate-900/40 border border-slate-700/50 rounded-xl px-3 py-2 w-[85%] sm:w-[90%] md:w-auto hover:border-blue-500/30 transition-colors">
+                <div className="bg-blue-500/20 p-1.5 rounded-lg shrink-0">
+                  <Truck className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" />
                 </div>
                 <div className="flex flex-col text-left">
-                  <span className="text-[10px] sm:text-xs text-slate-400 uppercase tracking-wider font-semibold">Compra 100% Segura</span>
-                  <span className="text-xs sm:text-sm font-bold text-white">Pague somente no momento da entrega</span>
+                  <span className="text-[9px] sm:text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Compra 100% Segura</span>
+                  <span className="text-[11px] sm:text-sm font-bold text-white leading-tight">Pague somente no momento da entrega</span>
                 </div>
               </div>
+            </div>
+
+            {/* Bullets — Lado a lado abaixo do CTA */}
+            <div className="flex flex-row flex-wrap justify-center md:justify-start gap-2.5 sm:gap-4 w-full">
+              {['100% Natural', 'Satisfação Garantida', 'Mais Energia', 'Autoestima Elevada', 'Performance Máxima'].map((item) => (
+                <div key={item} className="flex items-center gap-1.5 bg-slate-800/40 px-3.5 py-2 rounded-full border border-slate-700/50">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 flex-shrink-0" />
+                  <span className="text-slate-200 font-semibold text-[11px] sm:text-sm whitespace-nowrap">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Imagem — aparece DEPOIS no mobile, com reveal-pop */}
+          <div className="w-full flex justify-center mt-12 md:mt-0 order-2">
+            <div className="reveal-pop relative">
+              {/* Selo ANVISA */}
+              <div className="absolute top-0 right-0 md:-right-8 z-20 flex flex-col items-center justify-center bg-gradient-to-tr from-green-500 to-emerald-400 text-white rounded-full w-[88px] h-[88px] shadow-[0_0_25px_rgba(34,197,94,0.4)] transform rotate-12 border-2 border-green-300/40">
+                <ShieldCheck className="w-7 h-7 mb-0.5" />
+                <span className="text-[10px] font-black uppercase text-center leading-[1.1]">Aprovado<br/>Anvisa</span>
+              </div>
+              <ProductImage size="hero" />
             </div>
           </div>
 
