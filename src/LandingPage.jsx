@@ -22,10 +22,10 @@ function useReveal() {
 // ── Imagem Real do Produto ────────────────────────────────────────────────────
 function ProductImage({ size = 'lg', src = '/produto-hero.png', className = '' }) {
   const sizeMap = {
-    hero:  'w-80 h-auto max-h-[28rem] sm:w-[28rem] sm:max-h-[36rem]',
-    lg:    'w-64 h-auto max-h-80 md:w-80 md:max-h-96',
-    sm:    'w-32 h-auto max-h-44',
-    md:    'h-48 sm:h-56 w-full object-contain',
+    hero: 'w-80 h-auto max-h-[28rem] sm:w-[28rem] sm:max-h-[36rem]',
+    lg: 'w-64 h-auto max-h-80 md:w-80 md:max-h-96',
+    sm: 'w-32 h-auto max-h-44',
+    md: 'h-48 sm:h-56 w-full object-contain',
   };
   const dim = sizeMap[size] || sizeMap['lg'];
 
@@ -51,7 +51,7 @@ function Marquee() {
   const items = Array(6).fill(text).join(' ');
   return (
     <div className="relative overflow-hidden bg-blue-600 py-3 border-y border-blue-400/30">
-      <div className="flex whitespace-nowrap animate-[marquee_25s_linear_infinite]">
+      <div className="flex whitespace-nowrap animate-[marquee_15s_linear_infinite]">
         <span className="text-white font-bold text-sm tracking-widest pr-8">{items}</span>
         <span className="text-white font-bold text-sm tracking-widest pr-8">{items}</span>
       </div>
@@ -84,16 +84,15 @@ function Hero() {
               <button className="btn-cta w-[85%] sm:w-[90%] md:w-auto px-4 py-4 md:px-10 md:py-5 rounded-xl md:rounded-2xl text-white font-black text-base sm:text-lg md:text-xl tracking-wider uppercase cursor-pointer hover:scale-105 transition-transform duration-300 shadow-[0_0_30px_rgba(37,99,235,0.4)]">
                 QUERO EXPERIMENTAR AGORA
               </button>
-              
-              {/* Badge DESTAQUE entrega */}
-              <div className="flex items-center justify-center gap-2 text-slate-300 bg-slate-900/40 border border-slate-700/50 rounded-xl px-3 py-2 w-[85%] sm:w-[90%] md:w-auto hover:border-blue-500/30 transition-colors">
-                <div className="bg-blue-500/20 p-1.5 rounded-lg shrink-0">
-                  <Truck className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" />
-                </div>
-                <div className="flex flex-col text-left">
-                  <span className="text-[9px] sm:text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Compra 100% Segura</span>
-                  <span className="text-[11px] sm:text-sm font-bold text-white leading-tight">Pague somente no momento da entrega</span>
-                </div>
+
+              {/* Badge DESTAQUE entrega - Minimalista */}
+              <div className="flex flex-col items-center justify-center gap-1 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl px-5 py-2.5 w-[85%] sm:w-[90%] md:w-auto mt-2 shadow-lg">
+                <span className="text-[10px] sm:text-[11px] uppercase tracking-widest font-black text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-slate-400 drop-shadow-sm">
+                  Compra 100% Segura
+                </span>
+                <span className="text-[11px] sm:text-sm font-medium text-slate-300">
+                  Pague somente no momento da entrega
+                </span>
               </div>
             </div>
 
@@ -114,7 +113,7 @@ function Hero() {
               {/* Selo ANVISA */}
               <div className="absolute top-0 right-0 md:-right-8 z-20 flex flex-col items-center justify-center bg-gradient-to-tr from-green-500 to-emerald-400 text-white rounded-full w-[88px] h-[88px] shadow-[0_0_25px_rgba(34,197,94,0.4)] transform rotate-12 border-2 border-green-300/40">
                 <ShieldCheck className="w-7 h-7 mb-0.5" />
-                <span className="text-[10px] font-black uppercase text-center leading-[1.1]">Aprovado<br/>Anvisa</span>
+                <span className="text-[10px] font-black uppercase text-center leading-[1.1]">Aprovado<br />Anvisa</span>
               </div>
               <ProductImage size="hero" />
             </div>
@@ -134,12 +133,12 @@ function SectionDivider() {
 // ── Problema (Cards no estilo do site) ────────────────────────────────────
 function Problema() {
   const sinais = [
-    { icon: <BatteryFull className="w-5 h-5 text-blue-400" />, label: 'Cansaço crônico',  num: '01' },
-    { icon: <Brain       className="w-5 h-5 text-blue-400" />, label: 'Foco perdido',     num: '02' },
-    { icon: <Moon        className="w-5 h-5 text-blue-400" />, label: 'Sono ruim',        num: '03' },
-    { icon: <TrendingUp  className="w-5 h-5 text-blue-400" />, label: 'Queda na libido',  num: '04' },
-    { icon: <Activity    className="w-5 h-5 text-blue-400" />, label: 'Estresse alto',    num: '05' },
-    { icon: <Flame       className="w-5 h-5 text-blue-400" />, label: 'Sem motivação',    num: '06' },
+    { icon: <BatteryFull className="w-6 h-6 text-blue-400" />, label: <>Cansaço<br />crônico</> },
+    { icon: <Brain className="w-6 h-6 text-blue-400" />, label: <>Foco<br />perdido</> },
+    { icon: <Moon className="w-6 h-6 text-blue-400" />, label: <>Sono<br />ruim</> },
+    { icon: <TrendingUp className="w-6 h-6 text-blue-400" />, label: <>Queda na<br />libido</> },
+    { icon: <Activity className="w-6 h-6 text-blue-400" />, label: <>Estresse<br />alto</> },
+    { icon: <Flame className="w-6 h-6 text-blue-400" />, label: <>Sem<br />motivação</> },
   ];
   return (
     <section className="bg-slate-950 py-16 relative overflow-hidden">
@@ -159,30 +158,42 @@ function Problema() {
         <div className="grid grid-cols-2 gap-3 mb-8">
           {sinais.map((s, i) => (
             <div
-              key={s.label}
-              className={`reveal reveal-d${Math.min(i + 1, 5)} glass-card rounded-2xl px-4 py-4 flex items-center gap-3 text-left hover:border-blue-500/30 hover:shadow-[0_0_16px_rgba(59,130,246,0.12)] transition-all duration-300`}
+              key={i}
+              className={`reveal reveal-d${Math.min(i + 1, 5)} glass-card rounded-2xl px-4 sm:px-6 py-4 flex items-center justify-start gap-4 text-left hover:border-blue-500/30 hover:shadow-[0_0_16px_rgba(59,130,246,0.12)] transition-all duration-300`}
             >
-              {/* Número sutil */}
-              <span className="text-slate-700 font-black text-xs font-mono shrink-0">{s.num}</span>
-              {/* Ícone */}
-              <div className="p-1.5 bg-blue-500/10 rounded-lg shrink-0">{s.icon}</div>
-              {/* Label */}
-              <span className="text-slate-200 font-semibold text-sm leading-tight">{s.label}</span>
+              {/* Ícone fixo alinhado à esquerda */}
+              <div className="p-2 bg-blue-500/10 rounded-xl shrink-0 flex items-center justify-center">
+                {s.icon}
+              </div>
+              {/* Texto */}
+              <span className="text-slate-200 font-semibold text-sm sm:text-[15px] leading-snug">
+                {s.label}
+              </span>
             </div>
           ))}
         </div>
 
-        {/* Box de resolução — mesmo estágio visual dos outros cards */}
-        <div className="reveal reveal-d2 glass-card rounded-2xl px-6 py-5 border-blue-500/25">
-          <div className="flex items-center justify-center gap-2 mb-2">
-            <div className="w-5 h-5 rounded-full bg-blue-500/20 flex items-center justify-center">
-              <CheckCircle2 className="w-3.5 h-3.5 text-blue-400" />
+        {/* Box de resolução — Destaque Premium */}
+        <div className="reveal reveal-d2 relative mt-4">
+          {/* Efeito Glow de fundo */}
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 via-indigo-500 to-blue-600 rounded-2xl blur opacity-30 animate-pulse"></div>
+
+          <div className="relative glass-card rounded-2xl px-6 py-8 sm:px-8 border border-blue-500/40 bg-slate-900/95 shadow-2xl">
+            {/* Badge */}
+            <div className="flex justify-center mb-5">
+              <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 px-4 py-1.5 rounded-full">
+                <CheckCircle2 className="w-4 h-4 text-blue-400" />
+                <span className="text-blue-400 text-[11px] font-black tracking-widest uppercase">A Solução Definitiva</span>
+              </div>
             </div>
-            <span className="text-blue-400 text-xs font-black tracking-widest uppercase">A Solução</span>
+
+            {/* Copy persuasiva */}
+            <p className="text-slate-300 text-[15px] sm:text-base leading-relaxed">
+              O <strong className="text-white font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-200">LEVANTA MAX</strong> age diretamente na raiz do desgaste masculino.
+              Sua fórmula líquida de rápida absorção reativa a energia celular, restaura o equilíbrio e devolve o vigor e a confiança que você merece.
+              <br /><span className="text-white font-semibold mt-2 block">Chega de viver pela metade.</span>
+            </p>
           </div>
-          <p className="text-slate-300 text-sm leading-relaxed">
-            O <span className="text-white font-black">LEVANTA MAX</span> atua diretamente na raiz do problema — equilíbrio hormonal, energia celular e disposição real — com fórmula 100% natural.
-          </p>
         </div>
       </div>
     </section>
@@ -192,10 +203,10 @@ function Problema() {
 // ── Benefícios ────────────────────────────────────────────────────────────────
 function Beneficios() {
   const cards = [
-    { icon: <Zap className="w-7 h-7 text-blue-400" />, title: 'Mais Energia', desc: 'Ação direta no metabolismo celular para disposição real durante todo o dia.' },
-    { icon: <Heart className="w-7 h-7 text-blue-400" />, title: 'Autoestima Elevada', desc: 'Equilíbrio hormonal que restaura sua confiança e presença masculina.' },
-    { icon: <Award className="w-7 h-7 text-blue-400" />, title: 'Performance Máxima', desc: 'Suporte completo para rendimento físico e mental nos momentos que importam.' },
-    { icon: <ShieldCheck className="w-7 h-7 text-blue-400" />, title: 'Fórmula Segura', desc: '100% natural, sem contraindicações graves e com aprovação garantida.' },
+    { icon: <Zap className="w-7 h-7 text-blue-400" />, title: 'Mais Energia', desc: 'Acorde seu corpo, sinta a disposição correr em você o dia todo.' },
+    { icon: <Heart className="w-7 h-7 text-blue-400" />, title: 'Autoestima Elevada', desc: 'Recupere sua presença, domine qualquer ambiente e sinta-se o homem que você é.' },
+    { icon: <Award className="w-7 h-7 text-blue-400" />, title: 'Performance Máxima', desc: 'Corpo e mente no auge quando realmente importa. Surpreenda-se.' },
+    { icon: <ShieldCheck className="w-7 h-7 text-blue-400" />, title: 'Fórmula Segura', desc: '100% natural, sem riscos, pronta para você usar sem pensar duas vezes.' },
   ];
 
   return (
@@ -253,32 +264,83 @@ function Beneficios() {
 // ── Ingredientes ──────────────────────────────────────────────────────────────
 function Ingredientes() {
   const items = [
-    { icon: <Leaf className="w-8 h-8 text-green-400" />, name: 'Maca Peruana', dose: '500mg', desc: 'Raiz andina com séculos de uso para vitalidade, libido e equilíbrio hormonal natural.' },
-    { icon: <FlaskConical className="w-8 h-8 text-blue-400" />, name: 'Zinco Quelato', dose: '15mg', desc: 'Mineral essencial para a síntese de testosterona e imunidade robusta.' },
-    { icon: <Zap className="w-8 h-8 text-yellow-400" />, name: 'Vitamina B6', dose: '10mg', desc: 'Cofator metabólico que combate o cansaço e amplifica a produção de energia celular.' },
-    { icon: <Star className="w-8 h-8 text-purple-400" />, name: 'Magnésio Bisglicinato', dose: '200mg', desc: 'Alta absorção para recuperação muscular, sono profundo e redução do cortisol.' },
+    {
+      icon: <Activity className="w-8 h-8 text-blue-400" />,
+      name: 'Arginina',
+      tag: 'MAIS CIRCULAÇÃO E MAIS FIRMEZA.',
+      desc: 'Aumenta o fluxo sanguíneo e melhora a oxigenação muscular, favorecendo resistência, desempenho físico e uma performance masculina mais intensa.'
+    },
+    {
+      icon: <Zap className="w-8 h-8 text-blue-400" />,
+      name: 'Cafeína',
+      tag: 'ENERGIA PRA DURAR A NOITE INTEIRA.',
+      desc: 'Estimula disposição física e mental, reduz o cansaço e mantém o corpo em estado de alerta, foco e rendimento elevado.'
+    },
+    {
+      icon: <ShieldCheck className="w-8 h-8 text-blue-400" />,
+      name: 'Vitaminas do Complexo B',
+      tag: 'DESEMPENHO QUE O CORPO SENTE.',
+      desc: 'Atuam diretamente na produção de energia e combate ao esgotamento, ajudando o corpo a manter disposição, vitalidade e intensidade.'
+    },
+    {
+      icon: <FlaskConical className="w-8 h-8 text-blue-400" />,
+      name: 'Zinco',
+      tag: 'O MINERAL DA PERFORMANCE MASCULINA.',
+      desc: 'Essencial para a produção natural de testosterona, libido, vigor físico e recuperação do organismo, fortalecendo a potência masculina diariamente.'
+    },
   ];
 
   return (
-    <section className="bg-slate-950 py-20 relative overflow-hidden">
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-64 bg-blue-600/5 blur-3xl pointer-events-none" />
-      <div className="container mx-auto px-4 md:px-8 max-w-5xl relative z-10">
-        <div className="text-center mb-14">
-          <h2 className="reveal text-3xl md:text-4xl font-black text-white mb-3">
+    <section className="bg-slate-950 py-24 relative overflow-hidden">
+      {/* Luzes de Fundo (Glow) */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 left-1/4 w-[600px] h-[400px] bg-indigo-600/10 blur-[120px] rounded-full pointer-events-none" />
+
+      <div className="container mx-auto px-4 md:px-8 max-w-6xl relative z-10">
+        <div className="text-center mb-16">
+          <h2 className="reveal text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4 tracking-tight">
             Fórmula inteligente para o{' '}
             <span className="text-gradient-blue">homem moderno.</span>
           </h2>
-          <p className="reveal reveal-d1 text-slate-400 text-lg">Cada ingrediente selecionado com precisão científica.</p>
+          <p className="reveal reveal-d1 text-slate-400 text-lg md:text-xl max-w-2xl mx-auto">
+            Cada ingrediente foi selecionado com precisão científica para máxima absorção na forma líquida, entregando efeito progressivo e duradouro.
+          </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {items.map((ing, i) => (
-            <div key={ing.name} className={`reveal reveal-d${Math.min(i+1,5)} bg-slate-900/80 border border-slate-800 rounded-2xl p-6 hover:border-blue-500/30 hover:shadow-[0_0_20px_rgba(59,130,246,0.1)] transition-all duration-300 group text-center`}>
-              <div className="flex justify-center mb-4">
-                <div className="p-3 bg-slate-800 rounded-xl group-hover:scale-110 transition-transform">{ing.icon}</div>
+            <div
+              key={ing.name}
+              className={`reveal reveal-d${Math.min(i + 1, 5)} relative group`}
+            >
+              {/* Efeito de Borda Brilhante no Hover */}
+              <div className="absolute -inset-[1px] bg-gradient-to-b from-blue-500/0 via-blue-500/0 to-blue-500/0 group-hover:from-blue-500/50 group-hover:via-indigo-500/50 group-hover:to-blue-500/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-all duration-700 blur-sm"></div>
+
+              <div className="relative bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-3xl p-6 sm:p-8 hover:border-blue-500/50 hover:bg-slate-800/80 transition-all duration-500 flex flex-col h-full transform group-hover:-translate-y-2 group-hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.3)]">
+
+                {/* Ícone e Título Centralizados */}
+                <div className="flex flex-col items-center text-center mb-5">
+                  <div className="relative shrink-0 mb-4">
+                    <div className="absolute inset-0 bg-blue-500/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="p-3 bg-slate-950 border border-slate-800 rounded-xl relative z-10 group-hover:scale-110 group-hover:border-blue-500/50 transition-all duration-500 shadow-inner shadow-slate-800/50">
+                      {ing.icon}
+                    </div>
+                  </div>
+                  <h3 className="text-white font-black text-lg sm:text-xl group-hover:text-blue-400 transition-colors duration-300">
+                    {ing.name}
+                  </h3>
+                </div>
+
+                {/* Textos Centralizados */}
+                <div className="flex-grow flex flex-col items-center text-center">
+                  <div className="inline-block px-3 py-1.5 bg-blue-500/10 border border-blue-500/20 rounded-lg text-blue-400 text-[10px] sm:text-xs font-bold tracking-wider mb-4 group-hover:bg-blue-500/20 transition-colors duration-300 leading-tight">
+                    {ing.tag}
+                  </div>
+                  <p className="text-slate-400 text-sm leading-relaxed">
+                    {ing.desc}
+                  </p>
+                </div>
               </div>
-              <div className="text-white font-bold text-base mb-1">{ing.name}</div>
-              <div className="text-blue-400 text-xs font-mono font-bold mb-3 tracking-wider">{ing.dose} / dose</div>
-              <p className="text-slate-500 text-xs leading-relaxed">{ing.desc}</p>
             </div>
           ))}
         </div>
@@ -345,14 +407,14 @@ function Precos() {
 
         <div className="flex flex-col md:flex-row items-center md:items-stretch justify-center gap-6 mt-12">
           {plans.map((plan, i) => (
-            <div
-              key={plan.label}
-              className={`reveal reveal-d${i+1} relative rounded-2xl flex flex-col w-full max-w-sm md:max-w-xs transition-all duration-300
-                ${plan.featured
-                  ? 'border-2 border-blue-500 bg-slate-900/90 shadow-[0_0_40px_rgba(59,130,246,0.35)] scale-[1.04] z-10'
-                  : 'border border-slate-700/60 bg-slate-900/60 hover:border-blue-500/40 hover:shadow-[0_0_20px_rgba(59,130,246,0.12)]'
-                }`}
-            >
+            <div key={plan.label} className={`reveal reveal-d${i + 1} flex w-full max-w-sm md:max-w-xs ${plan.featured ? 'z-10' : ''}`}>
+              <div
+                className={`relative rounded-2xl flex flex-col w-full h-full transition-all duration-300
+                  ${plan.featured
+                    ? 'border-2 border-blue-500 bg-slate-900/90 shadow-[0_0_40px_rgba(59,130,246,0.35)] scale-[1.04]'
+                    : 'border border-slate-700/60 bg-slate-900/60 hover:border-blue-500/40 hover:shadow-[0_0_20px_rgba(59,130,246,0.12)]'
+                  }`}
+              >
               {plan.badge && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-500 text-white text-xs font-black px-4 py-1.5 rounded-full tracking-wider uppercase shadow-[0_0_15px_rgba(59,130,246,0.6)] whitespace-nowrap">
                   {plan.badge}
@@ -399,6 +461,7 @@ function Precos() {
                 </button>
               </div>
             </div>
+          </div>
           ))}
         </div>
 
@@ -492,7 +555,7 @@ function Depoimentos() {
           {depoimentos.map((dep, idx) => (
             <div key={dep.nome} className={`reveal reveal-d${idx + 1} bg-slate-900/50 border border-slate-800/80 p-8 rounded-3xl relative flex flex-col hover:border-blue-500/30 transition-colors duration-300 shadow-[0_4px_30px_rgba(0,0,0,0.5)] backdrop-blur-sm`}>
               <Quote className="absolute top-6 right-6 w-12 h-12 text-blue-500/10" />
-              
+
               <div className="flex gap-1 mb-6">
                 {[...Array(dep.rating)].map((_, i) => (
                   <Star key={i} className="w-4 h-4 fill-blue-500 text-blue-500" />
@@ -545,6 +608,47 @@ function Footer() {
     </footer>
   );
 }
+// ── Sessão Final ──────────────────────────────────────────────────────────────
+function SessaoFinal() {
+  return (
+    <section className="bg-black py-24 relative overflow-hidden text-center">
+      {/* Background decorativo sutil */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-[500px] bg-blue-600/5 blur-[120px] pointer-events-none rounded-full" />
+
+      <div className="container mx-auto px-4 max-w-4xl relative z-10 flex flex-col items-center">
+
+        {/* Título seguindo o padrão do site */}
+        <div className="mb-14 max-w-3xl mx-auto">
+          <h2 className="reveal text-4xl sm:text-5xl md:text-6xl font-black text-white leading-[1.1] tracking-tight drop-shadow-lg">
+            Agora com mais experiência, mais intensidade…
+            <span className="text-gradient-blue block mt-3">seja ele de novo</span>
+          </h2>
+        </div>
+
+        {/* Imagem Finalcheck Estática com Glow Premium */}
+        <div className="reveal relative flex items-center justify-center mb-16 w-full">
+          {/* Luz de fundo cinemática para destacar a imagem */}
+          <div className="absolute inset-0 bg-blue-600/10 blur-[100px] rounded-full scale-125 pointer-events-none" />
+          <div className="absolute bottom-10 w-4/5 h-1/4 bg-blue-500/20 blur-[60px] rounded-[100%] pointer-events-none" />
+          
+          <img
+            src="/Finalcheck.png"
+            alt="Final Check"
+            className="relative z-10 w-full max-w-2xl h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.6)]"
+            draggable={false}
+          />
+        </div>
+
+        {/* Botão de CTA */}
+        <div className="reveal reveal-d1 w-full flex justify-center">
+          <button className="btn-cta w-[85%] sm:w-[90%] md:w-auto px-8 py-5 md:px-14 md:py-6 rounded-2xl text-white font-black text-lg md:text-xl tracking-widest uppercase cursor-pointer hover:scale-105 transition-transform duration-300 shadow-[0_0_40px_rgba(37,99,235,0.4)]">
+            Aproveitar a oferta
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 // ── Página Principal ──────────────────────────────────────────────────────────
 export default function LandingPage() {
@@ -565,6 +669,9 @@ export default function LandingPage() {
       <Garantia />
       <SectionDivider />
       <Depoimentos />
+      <SectionDivider />
+      <Marquee />
+      <SessaoFinal />
       <Footer />
     </div>
   );
