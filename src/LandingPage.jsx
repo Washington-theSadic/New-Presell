@@ -20,7 +20,7 @@ function useReveal() {
 }
 
 // ── Imagem Real do Produto ────────────────────────────────────────────────────
-function ProductImage({ size = 'lg', src = '/produto-hero.png', className = '' }) {
+function ProductImage({ size = 'lg', src = '/produto-hero.webp', className = '', priority = false }) {
   const sizeMap = {
     hero: 'w-80 h-auto max-h-[28rem] sm:w-[28rem] sm:max-h-[36rem]',
     lg: 'w-64 h-auto max-h-80 md:w-80 md:max-h-96',
@@ -40,6 +40,8 @@ function ProductImage({ size = 'lg', src = '/produto-hero.png', className = '' }
         alt="LEVANTA MAX — Suplemento Líquido 30ml"
         className={`relative z-10 object-contain drop-shadow-[0_0_28px_rgba(59,130,246,0.65)] animate-[float_6s_ease-in-out_infinite] select-none ${dim}`}
         draggable={false}
+        loading={priority ? undefined : "lazy"}
+        fetchpriority={priority ? "high" : undefined}
       />
     </div>
   );
@@ -115,7 +117,7 @@ function Hero() {
                 <ShieldCheck className="w-7 h-7 mb-0.5" />
                 <span className="text-[10px] font-black uppercase text-center leading-[1.1]">Aprovado<br />Anvisa</span>
               </div>
-              <ProductImage size="hero" />
+              <ProductImage size="hero" priority={true} />
             </div>
           </div>
 
@@ -223,7 +225,7 @@ function Beneficios() {
 
           {/* Produto — aparece primeiro no mobile */}
           <div className="reveal flex justify-center md:order-2">
-            <ProductImage size="lg" src="/produto-aberto.png" />
+            <ProductImage size="lg" src="/produto-aberto.webp" />
           </div>
 
           {/* Cards esquerda */}
@@ -361,7 +363,7 @@ function Precos() {
       discount: null,
       featured: false,
       btnText: 'COMPRAR AGORA',
-      img: '/produto-hero.png',
+      img: '/produto-hero.webp',
     },
     {
       label: '3 FRASCOS',
@@ -374,7 +376,7 @@ function Precos() {
       featured: true,
       badge: 'Melhor Custo Benefício',
       btnText: 'APROVEITAR OFERTA',
-      img: '/produto-2x.png',
+      img: '/produto-2x.webp',
     },
     {
       label: '5 FRASCOS',
@@ -386,7 +388,7 @@ function Precos() {
       discount: 'Economize R$ 241',
       featured: false,
       btnText: 'COMPRAR AGORA',
-      img: '/produto-5x.png',
+      img: '/produto-5x.webp',
     },
   ];
 
@@ -491,7 +493,7 @@ function Garantia() {
       <div className="container mx-auto px-4 max-w-2xl text-center flex flex-col items-center">
         {/* Imagem de Garantia */}
         <div className="reveal-pop relative inline-flex justify-center mb-8">
-          <img src="/15dias.png" alt="Garantia de 15 dias" className="w-72 sm:w-80 md:w-96 h-auto object-contain drop-shadow-[0_0_30px_rgba(59,130,246,0.25)]" />
+          <img src="/15dias.webp" alt="Garantia de 15 dias" className="w-72 sm:w-80 md:w-96 h-auto object-contain drop-shadow-[0_0_30px_rgba(59,130,246,0.25)]" />
         </div>
 
         <div className="reveal reveal-d2 text-slate-300 text-base md:text-lg leading-relaxed space-y-3 max-w-xl">
@@ -632,10 +634,11 @@ function SessaoFinal() {
           <div className="absolute bottom-10 w-4/5 h-1/4 bg-blue-500/20 blur-[60px] rounded-[100%] pointer-events-none" />
           
           <img
-            src="/Finalcheck.png"
+            src="/Finalcheck.webp"
             alt="Final Check"
             className="relative z-10 w-full max-w-2xl h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.6)]"
             draggable={false}
+            loading="lazy"
           />
         </div>
 
